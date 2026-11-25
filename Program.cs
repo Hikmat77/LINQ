@@ -928,3 +928,337 @@ var enrollments = new List<Enrollment>
 //     Console.WriteLine($"{e.Id} - {e.Title}");
 // }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      CLASS-TASK(3)
+
+int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 20, 23, 25, 29, 31, 97, 100 };
+var cars = new List<Car>
+    {
+        new() {
+            Id = 1,
+            Brand = "Toyota",
+            Model = "Camry",
+            Year = 2020
+            },
+        new() {
+            Id = 2,
+            Brand = "Honda",
+            Model = "Civic",
+            Year = 2018
+            },
+        new() {
+            Id = 3,
+            Brand = "BMW",
+            Model = "X5",
+            Year = 2020
+            },
+        new() {
+            Id = 4,
+            Brand = "Mercedes",
+            Model = "C200",
+            Year = 2019
+            },
+        new() {
+            Id = 5,
+            Brand = "Kia",
+            Model = "Rio",
+            Year = 2018
+            },
+        new() {
+            Id = 6,
+            Brand = "Hyundai",
+            Model = "Solaris",
+            Year = 2020
+            },
+        new() {
+            Id = 7,
+            Brand = "Chevrolet",
+            Model = "Cobalt",
+            Year = 2015
+            },
+        new() {
+            Id = 8,
+            Brand = "Lada",
+            Model = "Granta",
+            Year = 2019
+            },
+        new() {
+            Id = 9,
+            Brand = "Ford",
+            Model = "Focus",
+            Year = 2015
+            },
+        new() {
+            Id = 10,
+            Brand = "Nissan",
+            Model = "Qashqai",
+            Year = 2018
+            }
+    };
+////////////////////////////////////////////////      TASK 1
+
+// Query syntax
+// var result =
+//     from p in people
+//     where p.Age > 30
+//     select p.Name;
+
+// Method syntax
+// var result = people
+//         .Where(x => x.Age > 30)
+//         .Select(x => x.Name);
+// foreach (var e in result)
+// {
+//     Console.WriteLine(e);
+// }
+
+////////////////////////////////////////////////      TASK 2
+
+// Query syntax
+// var result =
+//     from p in people
+//     group p by p.Age into g
+//     orderby g.Key
+//     select new { Age = g.Key, Count = g.Count() };
+
+// Method syntax
+// var result = people
+//         .GroupBy(x => x.Age)
+//         .OrderBy(g => g.Key)
+//         .Select(g => new { Age = g.Key, Count = g.Count() });
+// foreach (var e in result)
+// {
+//     Console.WriteLine($"Age: {e.Age} - Count: {e.Count}");
+// }
+
+////////////////////////////////////////////////      TASK 3
+
+// Query syntax
+// var result = 
+//     (from p in people
+//     orderby p.Age descending
+//     select p).Take(5);
+
+// Method syntax
+// var result = people
+//         .OrderByDescending(x => x.Age)
+//         .Take(5);
+// foreach (var p in result)
+// {
+//     System.Console.WriteLine($"{p.Name} - {p.Age}");
+// }
+
+////////////////////////////////////////////////      TASK 4
+
+// bool IsPrime(int n)
+// {
+//     if (n < 2) return false;
+//     if (n % 2 == 0) return n == 2;
+//     for (int i = 3; i * i <= n; i += 2)
+//     {
+//         if (n % i == 0) return false;
+//     }
+//     return true;
+// }
+
+// Query syntax (PLINQ)
+// var result =
+//     from n in numbers.AsParallel().AsOrdered()
+//     where IsPrime(n)
+//     select n;
+
+//  Method syntax (PLINQ)
+// var result = numbers
+//         .AsParallel()
+//         .AsOrdered()
+//         .Where(x => IsPrime(x));
+// foreach (var n in result)
+// {
+//     System.Console.Write(n + " ");
+// }
+
+////////////////////////////////////////////////      TASK 5
+
+// Query syntax (PLINQ)
+// var result =
+//     from c in cars.AsParallel()
+//     group c by c.Year into g
+//     orderby g.Key
+//     select new { Year = g.Key, Count = g.Count() };
+
+// Method syntax (PLINQ)
+// var result = cars
+//         .AsParallel()
+//         .GroupBy(x => x.Year)
+//         .OrderBy(g => g.Key)
+//         .Select(g => new { Year = g.Key, Count = g.Count() });
+// foreach (var e in result)
+// {
+//     Console.WriteLine($"Year: {e.Year} - Count: {e.Count}");
+// }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      HOME-TASK(3)
+
+var books = new List<Book>
+    {
+        new() {
+            Title = "C#",
+            Author = "Albahari"
+            },
+        new() {
+            Title = "C#",
+            Author = "Albahari"
+            },
+        new() {
+            Title = "LINQ",
+            Author = "Rattz"
+            },
+        new() {
+            Title = "CLR via C#",
+            Author = "Richter"
+            },
+        new() {
+            Title = "LINQ",
+            Author = "Rattz"
+            },
+        new() {
+            Title = "C#",
+            Author = "Skeet"
+            }
+    };
+
+//1
+var nums1 = new List<int> { 3, 1, 4, 1, 5, 9, 2, 6 };
+var sorted1 = nums1.OrderBy(x => x).ToList();
+int cnt1 = sorted1.Count();
+double median1;
+if (cnt1 % 2 == 0)
+{
+    median1 = new List<int> { sorted1.ElementAt(cnt1 / 2 - 1), sorted1.ElementAt(cnt1 / 2) }.Average();
+}
+else
+{
+    median1 = sorted1.ElementAt(cnt1 / 2);
+}
+System.Console.WriteLine(median1);
+
+
+//2
+var a2 = new List<int> { 1, 2, 3, 4 };
+var b2 = new List<int> { 2, 3, 5, 6 };
+var c2 = new List<int> { 2, 3, 7, 8 };
+var common2 = a2.Intersect(b2).Intersect(c2);
+foreach (var item in common2)
+{
+    System.Console.WriteLine(item);
+}
+
+
+//3
+var nums3 = new List<int> { 1, 2, 3, 1, 2, 5, 6 };
+var runs3 = nums3.Aggregate(new List<List<int>>(), (acc, x) =>
+{
+    if (acc.Count > 0 && acc[^1][^1] < x)
+    {
+        acc[^1].Add(x);
+    }
+    else
+    {
+        acc.Add(new List<int> { x });
+    }
+    return acc;
+});
+var best3 = runs3.OrderByDescending(r => r.Count).First();
+System.Console.WriteLine(best3.Sum());
+
+
+//4
+var items4 = new List<string> { "a", "b", "a", "c", "b", "a" };
+int n4 = 2;
+var top4 = items4
+    .AsParallel()
+    .GroupBy(x => x)
+    .OrderByDescending(g => g.Count())
+    .ThenBy(g => g.Key)
+    .Take(n4)
+    .Select(g => new { g.Key, Count = g.Count() });
+foreach (var t in top4)
+{
+    System.Console.WriteLine($"{t.Key} (x{t.Count})");
+}
+
+
+//5
+var books5 = new List<Book>
+{
+    new Book { Title = "C#", Author = "Albahari" },
+    new Book { Title = "C#", Author = "Albahari" },
+    new Book { Title = "LINQ", Author = "Rattz" }
+};
+var unique5 = books5
+    .GroupBy(b => new { b.Title, b.Author })
+    .Select(g => g.First());
+foreach (var bk in unique5)
+{
+    System.Console.WriteLine($"{bk.Title} - {bk.Author}");
+}
+
+
+//6
+var nums6 = new List<int> { 1, 5, 12, 7, 3, 9 };
+int min6 = 4;
+int max6 = 10;
+var result6 = nums6.Where(x => x >= min6 && x <= max6);
+foreach (var item in result6)
+{
+    System.Console.WriteLine(item);
+}
+
+//7
+var students7 = new List<(string Name, int Age)>
+{
+    ("Alice", 22),
+    ("Bob", 19),
+    ("Carol", 20)
+};
+int threshold7 = 20;
+var split7 = students7.ToLookup(s => s.Age > threshold7);
+System.Console.WriteLine("Older:");
+foreach (var item in split7[true])
+{
+    System.Console.WriteLine($"{item.Name} {item.Age}");
+}
+System.Console.WriteLine($"<= {threshold7}:");
+foreach (var item in split7[false])
+{
+    System.Console.WriteLine($"{item.Name} {item.Age}");
+}
+
+
+//8
+var nums8 = new List<int> { 1, 2, 2, 3, 3, 3, 4 };
+int n8 = 2;
+var result8 = nums8
+    .GroupBy(x => x)
+    .Where(g => g.Count() == n8)
+    .Select(g => g.Key);
+foreach (var item in result8)
+{
+    System.Console.WriteLine(item);
+}
+
+
+//9
+var words9 = new List<string> { "cat", "elephant", "ox", "dog" };
+var longest9 = words9.OrderByDescending(w => w.Length).First();
+System.Console.WriteLine(longest9);
+
+
+//10
+var nums10 = new List<int> { 199, 200, 155, 1999 };
+var best10 = nums10
+    .AsParallel()
+    .Select(x => new { Number = x, Sum = x.ToString().Sum(ch => ch - '0') })
+    .OrderByDescending(x => x.Sum)
+    .First();
+System.Console.WriteLine($"{best10.Number} - {best10.Sum}");

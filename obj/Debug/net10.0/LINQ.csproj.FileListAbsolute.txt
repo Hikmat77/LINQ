@@ -12,3 +12,4 @@ C:\Users\firuz\OneDrive\Desktop\LINQ\obj\Debug\net10.0\refint\LINQ.dll
 C:\Users\firuz\OneDrive\Desktop\LINQ\obj\Debug\net10.0\LINQ.pdb
 C:\Users\firuz\OneDrive\Desktop\LINQ\obj\Debug\net10.0\LINQ.genruntimeconfig.cache
 C:\Users\firuz\OneDrive\Desktop\LINQ\obj\Debug\net10.0\ref\LINQ.dll
+C:\Users\firuz\OneDrive\Desktop\LINQ\obj\Debug\net10.0\LINQ.sourcelink.json
